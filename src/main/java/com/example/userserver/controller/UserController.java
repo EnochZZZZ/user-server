@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("user")
@@ -22,4 +23,10 @@ public class UserController {
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
+
+    @GetMapping("/{id}")
+    public Optional<User> getUserById(@PathVariable String id) { return userService.getUserById(id); }
+
+    @DeleteMapping("/{id}")
+    public void deleteUserById(@PathVariable String id) { userService.deleteUser(id);}
 }
